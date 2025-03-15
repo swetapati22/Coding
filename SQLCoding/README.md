@@ -1,6 +1,6 @@
 # SQL Practice & Query Repository
 
-Thi repository is designed to track my **SQL query practice and database problem-solving journey**. It contains solutions to various SQL problems, covering multiple **database management concepts**, and serves as a structured reference for efficient query writing and optimization.
+This repository is designed to track my **SQL query practice and database problem-solving journey**. It contains solutions to various SQL problems, covering multiple **database management concepts**, and serves as a structured reference for efficient query writing and optimization.
 
 ## 🎯 Goals
 

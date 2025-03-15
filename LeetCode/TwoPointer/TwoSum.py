@@ -37,7 +37,7 @@ class Solution(object):
         :rtype: List[int]
         """
         # Dictionary to store numbers and their corresponding indices - O(1) per insertion
-        nums_to_index = {}
+        nums_to_index = {} 
         
         # Iterate through the list - O(n)
         for idx, num in enumerate(nums):
