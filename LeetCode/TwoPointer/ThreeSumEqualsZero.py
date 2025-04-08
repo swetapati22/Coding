@@ -66,9 +66,12 @@ class Solution:
         return triplet  # O(1)
 
 
-# Time Complexity Analysis:
+# Time Complexity:
 # - Sorting takes O(n log n)
 # - Iterating through nums takes O(n)
 # - Two-pointer search takes O(n) per iteration of i
 # - Skipping duplicates is at most O(n) per iteration
 # - Overall, the worst-case time complexity is **O(n^2)**, which is optimal compared to O(n^3) brute-force approaches.
+
+# Space Complexity:
+# - Output list only → **O(1)** auxiliary space (excluding result)
