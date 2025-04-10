@@ -2,75 +2,64 @@
 LeetCode Problem: 3Sum Closest  
 Level - Medium
 
-Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target.
+Given an integer array `nums` of length n and an integer `target`, find three integers in `nums` such that the sum is **closest** to `target`.
 
-Return the sum of the three integers.  
+Return the **sum of the three integers**.  
 You may assume that each input would have exactly one solution.
 
 Example 1:
-Input: nums = [-1,2,1,-4], target = 1  
+Input: nums = [-1, 2, 1, -4], target = 1  
 Output: 2  
 Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2)
 
 Example 2:
-Input: nums = [0,0,0], target = 1  
+Input: nums = [0, 0, 0], target = 1  
 Output: 0  
 Explanation: The sum that is closest to the target is 0. (0 + 0 + 0 = 0)
 
-Example 3:
-Input: nums = [-2, 0, 1, 2], target = 2  
-Output: 1  
-Explanation: The triplet [-2, 1, 2] has the closest sum to the target.
-
 Constraints:
-- 3 <= nums.length <= 500
-- -10^3 <= nums[i] <= 10^3
-- -10^4 <= target <= 10^4
+- 3 <= nums.length <= 500  
+- -10³ <= nums[i] <= 10³  
+- -10⁴ <= target <= 10⁴
 """
 
-from typing import List
-
 class Solution:
-    def threeSumClosest(self, nums: List[int], target: int) -> int:
-        nums.sort()  # O(n log n) – Sorting the array
+    def threeSumClosest(self, nums, target):
+        nums.sort()                                # O(n log n) – sort input array
 
-        closest_sum = float('inf')  # O(1) – Initialize with an infinitely large value
+        closest_sum = float('inf')                 # O(1) – initialize result variable
 
-        # Iterate through each element - O(n)
-        for i in range(len(nums) - 2):
-            left = i + 1  # O(1) – Start of the two-pointer range
-            right = len(nums) - 1  # O(1) – End of the two-pointer range
+        for i in range(len(nums)):                 # O(n) – loop through array to fix the first element
+            left = i + 1                            # O(1)
+            right = len(nums) - 1                   # O(1)
 
-            # Two-pointer loop - O(n) per i → overall O(n^2)
-            while left < right:
-                curr_sum = nums[i] + nums[left] + nums[right]  # O(1) – Compute sum of triplet
+            while left < right:                    # O(n) per iteration → total O(n^2)
+                curr_sum = nums[i] + nums[left] + nums[right]  # O(1)
 
-                # If it's an exact match, return immediately
-                if curr_sum == target:
-                    return curr_sum  # O(1)
+                if curr_sum == target:             # O(1)
+                    return curr_sum                # O(1)
 
-                # Update the closest_sum if:
-                # - it's closer than the previous, OR
-                # - it's equally close but smaller
-                if (abs(curr_sum - target) < abs(closest_sum - target)) or \
-                   (abs(curr_sum - target) == abs(closest_sum - target) and curr_sum < closest_sum):
-                    closest_sum = curr_sum  # O(1)
+                # Update closest sum if better or equally close but smaller
+                if (
+                    abs(curr_sum - target) < abs(closest_sum - target) or         # O(1)
+                    (abs(curr_sum - target) == abs(closest_sum - target) and      # O(1)
+                     curr_sum < closest_sum)                                      # O(1)
+                ):
+                    closest_sum = curr_sum         # O(1)
 
-                # Move pointers accordingly
                 if curr_sum < target:
-                    left += 1  # O(1)
+                    left += 1                      # O(1)
                 else:
-                    right -= 1  # O(1)
+                    right -= 1                     # O(1)
 
-        return closest_sum  # O(1)
-
+        return closest_sum                         # O(1)
 
 # Time Complexity Analysis:
-# - Sorting takes O(n log n)
-# - Outer loop runs O(n) times
-# - Inner two-pointer loop runs O(n) per outer iteration
-# - Overall time complexity: **O(n^2)**
+# - Sorting the array: O(n log n)
+# - Outer loop to fix the first element: O(n)
+# - Inner two-pointer loop: O(n) per outer → O(n^2) total
+# - Overall time complexity is **O(n^2)**
 
 # Space Complexity:
-# - No extra space used apart from variables
-# - Sorting is in-place → **O(1)** auxiliary space
+# - Only a few pointers and variables are used → **O(1)** space
+# - No extra data structures needed
