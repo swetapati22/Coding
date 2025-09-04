@@ -62,6 +62,37 @@ def groupAnagrams_sorting(strs: List[str]) -> List[List[str]]:
         groups[key].append(s)                   # group strings with the same sorted key
     return list(groups.values())
 
+    # # Create a defaultdict with list as the default type
+    # # This means if a key doesn't exist yet, it will automatically start with an empty list
+    # groups = defaultdict(list)                  
+    # # Iterate through every string in the input list
+    # for s in strs:
+    #     # Sort the characters of the string
+    #     # Example: "eat" -> ['a','e','t'] -> "aet"
+    #     key = ''.join(sorted(s))                
+    #     # Use the sorted string as the key
+    #     # Append the original string to the group with this key
+    #     # Example: groups["aet"].append("eat"), groups["aet"].append("tea")
+    #     groups[key].append(s)                   
+    # # Convert the dictionary values into a list of lists and return
+    # # Example: dict_values([["eat","tea","ate"], ["tan","nat"], ["bat"]])
+    # return list(groups.values())
+    # ```
+    # ### Step-by-step with the example:
+    # **Input:**
+    # ```python
+    # strs = ["eat","tea","tan","ate","nat","bat"]
+    # ```
+    # 1. `"eat"` → sorted = `"aet"` → groups\["aet"] = `["eat"]`
+    # 2. `"tea"` → sorted = `"aet"` → groups\["aet"] = `["eat","tea"]`
+    # 3. `"tan"` → sorted = `"ant"` → groups\["ant"] = `["tan"]`
+    # 4. `"ate"` → sorted = `"aet"` → groups\["aet"] = `["eat","tea","ate"]`
+    # 5. `"nat"` → sorted = `"ant"` → groups\["ant"] = `["tan","nat"]`
+    # 6. `"bat"` → sorted = `"abt"` → groups\["abt"] = `["bat"]`
+    # Finally:
+    # ```python
+    # [["eat","tea","ate"], ["tan","nat"], ["bat"]]
+    # ```
 
 # ------------------------------
 # Approach 3: Brute Force Pairing (O(N^2 * K))
