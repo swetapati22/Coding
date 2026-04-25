@@ -2,7 +2,7 @@ class Solution:
     def minWindow(self, s: str, t: str) -> str:
         """
         Time = O(n+m)
-        Space = O(m)
+        Space = O(n+m)
         - Where n is the length of the string s and m is the total number of unique characters in the strings t and s.
         """
         if t == "":
