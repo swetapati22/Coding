@@ -1,20 +1,20 @@
 class MinStack:
     """
-    Time: O(1)
-    Space: O(2n) = O(n)
+    Time Complexity: O(1)
+    Space Complexity: O(2n) = O(n)
     """
 
     #Create two list - one acts as stack and another as min stack
     def __init__(self):
         self.stack = []
         self.minstack = []
-        min_val = ("-inf")
         
     #Stack push is straight forward, pushing to min_stack needs to check current min value vs the curr value in consideration
-    def push(self, val: int) -> None:
-        self.stack.append(val)
-        min_val = (val if not self.minstack else min(val, self.minstack[-1]))
-        self.minstack.append(min_val)    
+    def push(self, value: int) -> None:
+        self.stack.append(value)
+        # in order to check if curr val is less than the previous minstack value, ensure minstack was present
+        val = min(value, self.minstack[-1] if self.minstack else value)
+        self.minstack.append(val)  
 
     #Pop top value from both stack and minstack
     def pop(self) -> None:
